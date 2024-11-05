@@ -1,0 +1,92 @@
+namespace Dice;
+
+public class DiceGame
+{
+
+    
+     
+    static void Main(string[] args) 
+    {
+        int YourRandomNumber;
+        int HisRandomNumber;
+
+        int YourWinCount = 0;
+        int HisWinCount = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+
+            Random random = new Random();
+
+            Console.WriteLine("Press any key to start the game.");
+            Console.ReadKey(true);
+
+            YourRandomNumber = random.Next(1, 7);
+            Console.WriteLine("You rolled " + YourRandomNumber);
+            System.Threading.Thread.Sleep(500);
+            Console.WriteLine(".........");
+            System.Threading.Thread.Sleep(1000);
+            HisRandomNumber = random.Next(1, 7);
+            Console.WriteLine("Your opponent rolled " + HisRandomNumber);
+            System.Threading.Thread.Sleep(1000);
+
+            if (YourRandomNumber > HisRandomNumber)
+            {
+                YourWinCount++;
+                Console.WriteLine("You win");
+            }
+            else if (YourRandomNumber < HisRandomNumber)
+            {
+                HisWinCount++;
+                Console.WriteLine("You lose");
+            }
+            else
+            {
+                HisWinCount++;
+                YourWinCount++;
+                Console.WriteLine("It´s a tie");
+            }
+        }
+
+        if (YourWinCount > HisWinCount)
+        {
+            Console.WriteLine("You are a total winner!!");
+        }
+        else if (YourWinCount < HisWinCount)
+        {
+            Console.WriteLine("You are a total loser!");
+        }
+        else
+        {
+            Console.WriteLine("It´s a tie. Final round.");
+            Random random = new Random();
+
+            Console.WriteLine("Press any key to start the final game.");
+            Console.ReadKey(true);
+
+            YourRandomNumber = random.Next(1, 7);
+            Console.WriteLine("You rolled " + YourRandomNumber);
+            System.Threading.Thread.Sleep(500);
+            Console.WriteLine(".........");
+            System.Threading.Thread.Sleep(1000);
+            
+            do
+            {
+                HisRandomNumber = random.Next(1, 7);
+            } while (YourRandomNumber == HisRandomNumber);
+            
+            Console.WriteLine("Your opponent rolled " + HisRandomNumber);
+            
+            if (YourRandomNumber > HisRandomNumber)
+            {
+                Console.WriteLine("You win");
+            }
+            else if (YourRandomNumber < HisRandomNumber)
+            {
+                Console.WriteLine("You lose");
+            }
+        }
+
+
+    }
+}
